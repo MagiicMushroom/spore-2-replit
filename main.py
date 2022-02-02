@@ -1,4 +1,3 @@
-import keep_alive
 import discord
 import platform
 import time
@@ -226,9 +225,6 @@ async def eightball(ctx, *, question):
 @client.command(aliases=['16ball'])
 async def sixteenball(ctx, *, question):
     await ctx.send(str(question) + "\n" + str(random.choice(_8ball) + " " + str(random.choice(_8ball))))
-
-#don't die
-keep_alive.keep_alive()
 
 #omg its token boy
 client.run(os.environ['tokenboy'])
