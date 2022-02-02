@@ -41,6 +41,8 @@ dyno = f.read().splitlines()
 f = open("SMF Data/8ball.txt", "r")
 _8ball = f.read().splitlines()
 f.close
+for x in _8ball:
+  x = x.replace("(n)","\n")
 
 #helpful functions
 #nothing here right now
@@ -225,10 +227,7 @@ async def eightball(ctx, *, question):
 #16ball
 @client.command(aliases=['16ball'])
 async def sixteenball(ctx, *, question):
-    await ctx.send(str(question) + "\n" + str(random.choice(_8ball) + " " + str(random.choice(_8ball))))
-
-#don't die
-keep_alive.keep_alive()
+    await ctx.send(f"{question}\n{random.choice(_8ball)} {random.choice(_8ball)}")
 
 #omg its token boy
 client.run(os.environ['tokenboy'])
