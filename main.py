@@ -8,7 +8,7 @@ import random
 import json
 import os
 import re
-from  discord import Member
+from discord import Member
 from discord.ext import commands
 from datetime import datetime
 from discord.ext.commands import has_permissions, MissingPermissions
@@ -220,7 +220,7 @@ async def eightball(ctx, *, question):
     if random.randrange(1,10) == 1 and not "please" in question.lower().split():
         await ctx.send("ask more politely and maybe i'll answer, fucker")
         return
-    await ctx.send(str(question) + "\n" + str(random.choice(_8ball)))
+    await ctx.send(f"{question}\n{random.choice(_8ball)}")
 
 #16ball
 @client.command(aliases=['16ball'])
