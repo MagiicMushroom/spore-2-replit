@@ -229,5 +229,7 @@ async def eightball(ctx, *, question):
 async def sixteenball(ctx, *, question):
     await ctx.send(f"{question}\n{random.choice(_8ball)} {random.choice(_8ball)}")
 
+keep_alive.keep_alive()
+
 #omg its token boy
 client.run(os.environ['tokenboy'])
