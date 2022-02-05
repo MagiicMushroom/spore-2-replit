@@ -87,7 +87,11 @@ async def on_message(message):
     
     if message.author.id == 415763406310866953:
         if random.randrange(1,20) == 1:
-            await message.channel.send("pretty interesting man but im using a telescope right now and i cant find anyone who fucking asked")
+            await message.channel.send("i agree with pat")#"pretty interesting man but im using a telescope right now and i cant find anyone who fucking asked"
+    
+    if message.author.id == 720546849953546271:
+        if random.randrange(1,5) == 1:
+            await message.channel.send("fuck you ethan")
 
     if message.content.lower().startswith("ok but when"):#ok but when
         if message.author.id == 420879711779028993:#kevin du
@@ -117,7 +121,7 @@ async def on_message(message):
             return
         elif word in ["seggs", "seg", "sex", "sexxs"]:
             await message.channel.send("I LOVE SEX SEX SEGGS WHERE U DO THE SEGGS SEGGS")
-            await message.author.edit(nick = "seggs")
+            #await message.author.edit(nick = "seggs")
 
     for x in bully:#i do not support bullying in any way
         if str(x) in message.content.lower():
