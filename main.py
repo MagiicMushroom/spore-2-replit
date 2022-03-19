@@ -41,9 +41,7 @@ dyno = f.read().splitlines()
 f = open("SMF Data/8ball.txt", "r")
 _8ball = f.read().splitlines()
 f.close
-for x in _8ball:
-  x = x.replace("(n)","\n")
-
+  
 #helpful functions
 #nothing here right now
 
@@ -90,7 +88,7 @@ async def on_message(message):
             await message.channel.send("i agree with pat")#"pretty interesting man but im using a telescope right now and i cant find anyone who fucking asked"
     
     if message.author.id == 720546849953546271:
-        if random.randrange(1,5) == 1:
+        if False: #random.randrange(1,5) == 1:
             await message.channel.send("fuck you ethan")
 
     if message.content.lower().startswith("ok but when"):#ok but when
@@ -121,6 +119,7 @@ async def on_message(message):
             return
         elif word in ["seggs", "seg", "sex", "sexxs"]:
             await message.channel.send("I LOVE SEX SEX SEGGS WHERE U DO THE SEGGS SEGGS")
+            return
             #await message.author.edit(nick = "seggs")
 
     for x in bully:#i do not support bullying in any way
@@ -131,7 +130,7 @@ async def on_message(message):
     for x in stupidface:#krapsje
         for x in custom_emojis:
             message.content = message.content.replace(x,"")
-        if str(x) in message.content.lower():
+        if str(x) in message.content.lower().split() and random.randrange(1,5) == 1:
             response = random.choice(stupidface_response)
             await message.channel.send(response.format(x=x))
             return
@@ -172,6 +171,9 @@ async def hell(ctx):
         embed.add_field(name="m!ping",value="Returns your ping.",inline=False)
         embed.add_field(name="m!8ball (string)",value="Play 8ball!",inline=False)
         embed.add_field(name="m!16ball (string)",value="8ball but he develouped cancer.",inline=False)
+        embed.add_field(name="m!16ball (string)",value="8ball but he develouped cancer.",inline=False)
+        embed.add_field(name="m!rng (lower bound) (upper bound) (question)",value="find out how much IQ someone has using non random means",inline=False)
+      
         embed.add_field(name="m!kill (@user)",value="Kill someone!",inline=False)
 
         await ctx.send(embed=embed)
@@ -226,12 +228,27 @@ async def eightball(ctx, *, question):
     if random.randrange(1,10) == 1 and not "please" in question.lower().split():
         await ctx.send("ask more politely and maybe i'll answer, fucker")
         return
-    await ctx.send(f"{question}\n{random.choice(_8ball)}")
+    x = random.choice(_8ball).replace("(n)","\n")
+    await ctx.send(f"{question}\n{x}")
 
 #16ball
 @client.command(aliases=['16ball'])
 async def sixteenball(ctx, *, question):
     await ctx.send(f"{question}\n{random.choice(_8ball)} {random.choice(_8ball)}")
+
+@client.command(aliases=['d20'])
+async def rng(ctx, *, question):
+    x = question.split(" ", 2)
+    print(x)
+    if len(x) == 3:
+        try: 
+            await ctx.send(f"{x[2]}:\n{random.randrange(int(x[0]),int(x[1]))}")
+        except:
+            print(x)
+            await ctx.send("bitch those aren't numbers ):<")
+            return
+    else:
+        await ctx.send("its m!rng (number1) (number2) (question)")
 
 keep_alive.keep_alive()
 
