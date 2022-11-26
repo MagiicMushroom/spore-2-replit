@@ -1,8 +1,6 @@
 import keep_alive
 import discord
-import platform
 import time
-import configparser
 import asyncio
 import random
 import json
@@ -11,7 +9,6 @@ import re
 from discord import Member
 from discord.ext import commands
 from datetime import datetime
-from discord.ext.commands import has_permissions, MissingPermissions
 
 #whats the time bitch
 def current_time():
